@@ -24,3 +24,22 @@ test('Object.assign()', () =>{
    const obj = Object.assign(o2, o1);
    expect(obj).toBe(o2);
 });
+
+test('anonymous function', () => {
+    const fun1 = (x, y) => x * y;
+    expect(fun1(5, 5)).toBe(25);
+
+    const fun2 = (x, y) => { return x * y };
+    expect(fun2(5, 5)).toBe(25);
+
+    const expected = {a: 5, b: 5};
+    const fun3 = (x, y) => { return {a: x, b: y} };
+    // expect(fun3(5, 5)).toBe({a: 5, b: 5});  //Compared values have no visual difference. Note that you are testing for equality with the stricter `toBe` matcher using `Object.is`. For deep equality only, use `toEqual` instead. <Click to see difference>
+    expect(fun3(5, 5)).toEqual(expected);
+
+    // Parenthesize the body of function to return an object literal expression:
+    const fun4 = (x, y) => ({a: x, b: y});
+    // expect(fun3(5, 5)).toBe({a: 5, b: 5});  //Compared values have no visual difference. Note that you are testing for equality with the stricter `toBe` matcher using `Object.is`. For deep equality only, use `toEqual` instead. <Click to see difference>
+    expect(fun4(5, 5)).toEqual(expected);
+
+});
