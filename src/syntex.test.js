@@ -23,6 +23,10 @@ test('Object.assign()', () =>{
    const o2 = {b: 2};
    const obj = Object.assign(o2, o1);
    expect(obj).toBe(o2);
+   expect(obj).toEqual({
+       a: 1,
+       b: 2
+   });
 });
 
 test('anonymous function', () => {
