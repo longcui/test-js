@@ -29,6 +29,19 @@ test('Object.assign()', () =>{
    });
 });
 
+test('Object.assign() merge', () => {
+    const prop = {
+        a: 1
+    };
+    const prop2 = {
+        a: 2
+    };
+    let result = Object.assign({}, prop, prop2);
+    expect(result).toBe({
+        a: 2
+    })
+});
+
 test('anonymous function', () => {
     const fun1 = (x, y) => x * y;
     expect(fun1(5, 5)).toBe(25);
@@ -46,4 +59,13 @@ test('anonymous function', () => {
     // expect(fun3(5, 5)).toBe({a: 5, b: 5});  //Compared values have no visual difference. Note that you are testing for equality with the stricter `toBe` matcher using `Object.is`. For deep equality only, use `toEqual` instead. <Click to see difference>
     expect(fun4(5, 5)).toEqual(expected);
 
+});
+
+
+test('default parameter value', function () {
+   function f1(a, b = 0) {
+       expect(b).toEqual(0);
+   }
+
+   f1(1, undefined);
 });
