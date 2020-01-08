@@ -37,7 +37,7 @@ test('Object.assign() merge', () => {
         a: 2
     };
     let result = Object.assign({}, prop, prop2);
-    expect(result).toBe({
+    expect(result).toEqual({
         a: 2
     })
 });
